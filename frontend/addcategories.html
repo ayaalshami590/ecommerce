@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Categories</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .category-container {
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid #6c5ce7;
+        }
+        
+        .category-title {
+            margin-bottom: 2rem;
+            font-weight: 700;
+            color: #6c5ce7;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #dfe6e9;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-control:focus {
+            border-color: #6c5ce7;
+            box-shadow: 0 0 0 0.25rem rgba(108, 92, 231, 0.25);
+        }
+        
+        .btn-add {
+            background-color: #6c5ce7;
+            border: none;
+            padding: 12px 0;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-add:hover {
+            background-color: #5649c0;
+            transform: translateY(-2px);
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c5ce7;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center">
+    <div class="category-container">
+        <h1 class="category-title">Add New Category</h1>
+        <form action="backend/addcategory.php"  >
+            <div class="mb-3 input-icon">
+                <label for="image" class="form-label">Image URL</label>
+                <input type="text" name="image" class="form-control" id="image" placeholder="Enter image URL" required>
+                <i class="bi bi-image"></i>
+            </div>
+            <div class="mb-3 input-icon">
+                <label for="name" class="form-label">Category Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="Enter category name" required>
+                <i class="bi bi-tag"></i>
+            </div> 
+             
+        <div>
+          <a href="backend/addcategory.php">
+            <button type="submit" class="btn btn-add w-100">
+                <i class="bi bi-plus-circle"></i> Add Category
+            </button>
+            </a>
+    </form>
+        </div>
+  
+       
+    </div>
+    <script>
+        
+        const name = new URLSearchParams(window.location.search).get("name");
+        const image = new URLSearchParams(window.location.search).get("image");
+        fetch("http://localhost/ecommerce/backend/add.php?name="+name +image)
+    </script>
+    
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
