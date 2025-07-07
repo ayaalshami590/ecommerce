@@ -15,7 +15,7 @@
 </head>
 <body style= "padding : 0px 200px;  display:flex;  flex-direction:column;  align-items:center;">
     <?php
-    $coonect=mysqli_connect("localhost","root","","ecommerce-db");
+    $coonect=mysqli_connect("localhost","root","","ecommerce_db");
     $query = "SELECT * FROM products WHERE id = " . $_GET['id'];
     $result= mysqli_query($coonect, $query);
     $row=mysqli_fetch_assoc($result);
@@ -44,7 +44,7 @@
     echo" <section class='card p-3'>";
      echo"<h2> Related products</h2>";
      echo"<div style='display:flex; justify-content:space-between'>";
-     $coonect=mysqli_connect("localhost","root","","ecommerce-db");
+     $coonect=mysqli_connect("localhost","root","","ecommerce_db");
      $ssquery = "SELECT * FROM products WHERE id != " . $_GET['id'] . " limit 4";
      $res= mysqli_query(  $coonect, $ssquery);
      $vals=mysqli_fetch_all($res, MYSQLI_ASSOC);
@@ -64,7 +64,7 @@
     echo"<section class='card p-3'>";
      echo"<h2>reviews</h2>";
      echo"<div>";
-     $con=mysqli_connect("localhost","root","","ecommerce-db");
+     $con=mysqli_connect("localhost","root","","ecommerce_db");
      $eque="SELECT* FROM review  WHERE product_id = " . $_GET['id'];
      $re=mysqli_query($con,$eque);
     while( $vall=mysqli_fetch_assoc($re)){   

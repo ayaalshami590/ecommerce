@@ -29,7 +29,6 @@
 <body>
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <div class="container">
             <a class="navbar-brand" href="#">E-Shop</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -61,21 +60,20 @@
                     </a>
                 </div>
             </div>
-        </div>
     </nav>
 
     <!-- Product Grid -->
-    <div class="container">
+    <div class="container" style="display: flex; flex-wrap: wrap; gap: 20px;">
     </div>
         <script>
-           fetch("http://localhost/ecommerce/backend/get_products.php")
+            const id = new URLSearchParams(window.location.search).get("id");
+           fetch("http://localhost/ecommerce/backend/get_product.php?id="+id)
             .then(response => response.json())
             .then(data => {
                 const container = document.querySelector(".container");
                 for (let product of data) {
                     container.innerHTML += `
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-                 <div class="col">
+                <div>
                   <div class="card h-100">
                     <a href="details.html?id=${product.id}">
                         <img src="${product.image_url}"  class="product-img card-img-top" alt="${product.name}">
@@ -95,7 +93,6 @@
                      <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
                    </svg>
                    </a>
-                   </div>
                    </div>
                    </div>
                 </div>

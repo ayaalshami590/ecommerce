@@ -1,5 +1,5 @@
 <?php
-  $connect = mysqli_connect("localhost", "root", "", "ecommerce-db");
+  $connect = mysqli_connect("localhost", "root", "", "ecommerce_db");
   $squery = "SELECT * FROM products";
   if(isset($_GET['id']))
   $squery = $squery . " WHERE `categories-id` =".$_GET['id'];
