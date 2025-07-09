@@ -39,6 +39,13 @@
             z-index: 100;
         }
     </style>
+    <script>
+        const isAuth = localStorage.getItem("isAuth");
+
+        if(isAuth == 0){
+            window.location.href = "http://localhost/ecommerce/frontend/index.html";
+        }
+    </script>
 </head>
 <body>
     <!-- Navigation Bar -->

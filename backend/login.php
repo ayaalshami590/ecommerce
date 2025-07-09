@@ -1,7 +1,11 @@
 <?php
 
-$email1 = $_POST["email"];
-$password = $_POST["password"];
+$json = file_get_contents('php://input');
+
+$payload = json_decode($json, true);
+
+$email1 = $payload["email"];
+$password = $payload["password"];
 
 $connect = mysqli_connect("localhost", "root", "", "ecommerce_db");
 
@@ -11,10 +15,10 @@ $row = mysqli_fetch_assoc($result);
 
 if ($row) {
    if ($row['password1'] == $password) {
-      header("Location:http://localhost/ecommerce/frontend/categories.html");
+      echo json_encode(['success' => true]);
    } else {
-      header("location:http://localhost/ecommerce/frontend/index.html?message=incorrect password");;
+      echo json_encode(['success' => false, 'message' => 'invalid password']);
    }
 } else {
-   header("location:http://localhost/ecommerce/frontend/index.html?message=incorrect email");
+   echo json_encode(['success' => false, 'message' => 'invalid email']);
 }

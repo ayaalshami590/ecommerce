@@ -79,15 +79,22 @@
             color: #6c5ce7;
         }
     </style>
+        <script>
+            const isAuth = localStorage.getItem("isAuth");
+    
+            if(isAuth == 0){
+                window.location.href = "http://localhost/ecommerce/frontend/index.html";
+            }
+        </script>
 </head>
 
 <body class="d-flex justify-content-center">
     <div class="category-container">
         <h1 class="category-title">Add New Category</h1>
-        <form action="http://localhost/ecommerce/backend/addcategory.php" method="post">
+        <form action="http://localhost/ecommerce/backend/addcategory.php" method="post" enctype="multipart/form-data">
             <div class="mb-3 input-icon">
                 <label for="image" class="form-label">Image URL</label>
-                <input type="text" name="image" class="form-control" id="image" placeholder="Enter image URL" required>
+                <input type="file" name="image" class="form-control" id="image" placeholder="Enter image URL" required>
                 <i class="bi bi-image"></i>
             </div>
             <div class="mb-3 input-icon">

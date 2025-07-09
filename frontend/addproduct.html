@@ -79,6 +79,13 @@
             color: #6c5ce7;
         }
     </style>
+    <script>
+        const isAuth = localStorage.getItem("isAuth");
+
+        if(isAuth == 0){
+            window.location.href = "http://localhost/ecommerce/frontend/index.html";
+        }
+    </script>
 </head>
 
 <body class="d-flex justify-content-center">
