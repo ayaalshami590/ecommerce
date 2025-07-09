@@ -47,7 +47,8 @@
 <body class="d-flex justify-content-center">
     <div class="login-container bg-white">
         <h1 class="login-title text-center">Creat an acount</h1>
-        <form action="backend/creat.php" method="post">
+        <form action="http://localhost/ecommerce/backend/creat.php" method="post">
+            <div class="alert alert-danger" style="display:none" role="alert"></div>
             <div class="mb-1">
                 <label for="email" class="form-label">Email</label>
                 <input type="text"  name="email"class="form-control" id="email" placeholder="Enter your name" required>
@@ -73,14 +74,14 @@
 
         </form>        
     </div>
-    <script>
-     const email = new URLSearchParams(window.location.search).post("email");
-     const password = new URLSearchParams(window.location.search).post("password");
-     const name = new URLSearchParams(window.location.search).post("name");
-     const numberphone= new URLSearchParams(window.location.search).post("numberphone");
-     const country = new URLSearchParams(window.location.search).post("country");
-        fetch("http://localhost/ecommerce/backend/creat.php?="+email +password +name +numberphone  +country);
-    </script>
+    <script> 
+      const message = new URLSearchParams(window.location.search).get("message");
+        if(message){
+            const alert = document.querySelector(".alert");
+            alert.textContent = message;
+            alert.style.display = "block";
+        }
+     </script> 
  
             
 
